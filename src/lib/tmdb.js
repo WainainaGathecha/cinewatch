@@ -14,3 +14,16 @@ export async function getPopularMovies() {
     return data.results;
     
 }
+
+export async function getTrendingMovie() {
+    const response = await fetch(
+        `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`
+    );
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch trending movie");
+    }
+
+    const data = await response.json();
+    return data.results[0];
+}
