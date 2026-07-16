@@ -9,7 +9,7 @@ export default function HeroSection({
 }) {
     return (
         <section className="relative h-[85vh] w-full overflow-hidden">
-            {/* Background imge + gradient */}
+            {/* Background image + gradient */}
             <div className="absolute inset-0 z-0">
                 <div 
                     className="w-full h-full bg-cover bg-center"
