@@ -50,3 +50,6 @@ A simple movie recommendation application using React. The goal of this project 
 - a notification badge
 - a hover effect when the buttons are hovered over
 
+### Issues
+
+- scrollbar on popular sections cards

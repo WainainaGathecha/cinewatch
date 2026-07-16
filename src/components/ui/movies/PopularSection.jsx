@@ -10,7 +10,7 @@ export default function PopularSection({ movies }) {
                 </a>
             </div>
 
-            <div className="flex gap-4 overflow-x-auto scroll-hide px-4">
+            <div className="flex gap-4 overflow-x-auto px-4">
                 {movies.map((movie) => (
                     <MovieCard
                         key={movie.id}

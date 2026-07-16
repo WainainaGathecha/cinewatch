@@ -4,9 +4,11 @@
 @import "@fontsource-variable/inter";
 
 @theme {
+  
   /* colors */
   --color-surface: #131313;
   --color-primary: #ffb4aa;
+  --color-secondary: #fff;
   --color-primary-container: #e50914;
   --color-on-primary-container: #fff7f6;
   --color-on-surface: #e5e2e1;
@@ -15,4 +17,5 @@
   /* fonts */
   --font-display: "Sora", sans-serif;
   --font-body: "Hanken Grotesk", sans-serif;
+  
 }
