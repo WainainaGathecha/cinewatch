@@ -49,7 +49,7 @@ export default function HeroSection() {
                     </div>
                 </div>
 
-                <h2 className="font-display text-4xl leading-none max-w-xs">
+                <h2 className="font-display text-primary text-4xl leading-none max-w-xs">
                     {movie.title}
                 </h2>
 

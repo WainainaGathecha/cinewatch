@@ -14,7 +14,7 @@ export default function PopularSection() {
     return (
         <section className="mt-8">
             <div className="flex justify-between items-end px-4 mb-4">
-                <h3 className="font-display text-xl">Popular</h3>
+                <h3 className="font-display text-primary text-xl">Popular</h3>
                 <a href="#" className="text-xs text-primary uppercase tracking-wider">
                     See All
                 </a>
