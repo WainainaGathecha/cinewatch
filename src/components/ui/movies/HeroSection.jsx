@@ -1,19 +1,36 @@
+import { useQuery } from "@tanstack/react-query"
 import { Play, Plus, Star} from "lucide-react";
+import { getTrendingMovie } from "@/lib/tmdb";
 
-export default function HeroSection({
-    title,
-    tagline,
-    rating,
-    backdropUrl,
-    isFeatured = true,
-}) {
+export default function HeroSection() {
+    const { data: movie, isLoading, error } = useQuery({
+        queryKey: ["movies", "trending", "day"],
+        queryFn: getTrendingMovie,
+    });
+
+    if (isLoading) {
+        return (
+            <section className="relative h-[85vh] w-full bg-surface animate-pulse" />
+        );
+    }
+
+    if (error || !movie) {
+        return (
+            <section className="relative h-[85vh] w-full flex items-center justify-center">
+                <p className="text-on-surface-variant">
+                    Couldn't load featured movie
+                </p>
+            </section>
+        )
+    }
+
     return (
         <section className="relative h-[85vh] w-full overflow-hidden">
             {/* Background image + gradient */}
             <div className="absolute inset-0 z-0">
                 <div 
                     className="w-full h-full bg-cover bg-center"
-                    style={{ backgroundImage: `url('${backdropUrl}')` }}
+                    style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})` }}
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-surface via-surface/50 to-transparent" />
             </div>
@@ -21,23 +38,21 @@ export default function HeroSection({
             {/* Content */}
             <div className="absolute bottom-0 left-0 w-full p-4 z-10 flex flex-col gap-4">
                 <div className="flex items-center gap-2">
-                    {isFeatured && (
-                        <span className="px-2 py-0.5 bg-primary-container text-on-primary-container text-[10px] font-bold rounded uppercase tracking-widest">
-                            Featured
-                        </span>
-                    )}
+                    <span className="px-2 py-0.5 bg-primary-container text-on-primary-container text-[10px] font-bold rounded uppercase tracking-widest">
+                        Trending
+                    </span>
                     <div className="flex items-center text-white">
                         <Star size={14} fill='currentColor'/>
-                        <span className="text-xs ml-1">{rating}</span>
+                        <span className="text-xs ml-1">{movie.vote_average.toFixed(1)}</span>
                     </div>
                 </div>
 
                 <h2 className="font-display text-4xl leading-none max-w-xs">
-                    {title}
+                    {movie.title}
                 </h2>
 
                 <p className="text-on-surface-variant max-w-md line-clamp-2">
-                    {tagline}
+                    {movie.overview}
                 </p>
 
                 <div className="flex gap-3 mt-2">
