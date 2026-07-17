@@ -44,3 +44,12 @@ A simple movie recommendation application using React. The goal of this project 
 4. state management
 5. testing
 6. deploy
+
+### Would be cool to add
+
+- a notification badge
+- a hover effect when the buttons are hovered over
+
+### Issues
+
+- scrollbar on popular sections cards
