@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query"
 import { Play, Plus, Star} from "lucide-react";
-import { getTrendingMovie } from "@/lib/tmdb";
+import { getTrendingMovies } from "@/lib/tmdb";
 
 export default function HeroSection() {
-    const { data: movie, isLoading, error } = useQuery({
+    const { data: movies, isLoading, error } = useQuery({
         queryKey: ["movies", "trending", "day"],
-        queryFn: getTrendingMovie,
+        queryFn: getTrendingMovies,
     });
+
+    const movie = movies?.[0];
 
     if (isLoading) {
         return (

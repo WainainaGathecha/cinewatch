@@ -15,15 +15,9 @@ export async function getPopularMovies() {
     
 }
 
-export async function getTrendingMovie() {
-    const response = await fetch(
-        `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`
-    );
-
-    if (!response.ok) {
-        throw new Error("Failed to fetch trending movie");
-    }
-
+export async function getTrendingMovies() {
+    const response = await fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`);
+    if (!response.ok) throw new Error("Failed to fetch trending movies");
     const data = await response.json();
-    return data.results[0];
+    return data.results;
 }
