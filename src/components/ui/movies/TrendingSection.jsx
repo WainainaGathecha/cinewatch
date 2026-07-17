@@ -1,20 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import MovieCard from "./MovieCard";
-import { getPopularMovies } from "@/lib/tmdb";
+import { getTrendingMovies } from "@/lib/tmdb";
 
-export default function PopularSection() {
+export default function TrendingSection() {
     const { data: movies, isLoading, error } = useQuery({
-        queryKey: ["movies", "popular"],
-        queryFn: getPopularMovies,
+        queryKey: ["movies", "trending", "day"],
+        queryFn: getTrendingMovies,
     });
 
     if (isLoading) return <p className="px-4 text-on-surface-variant">Loading...</p>;
     if (error) return <p className="px-4 text-red-400">{error.message}</p>
 
+    const rowMovies = movies.slice(1);
+
     return (
         <section className="mt-8">
             <div className="flex justify-between items-end px-4 mb-4">
-                <h3 className="font-display text-primary text-xl">Popular</h3>
+                <h3 className="font-display text-xl text-primary">Trending</h3>
                 <a href="#" className="text-xs text-primary uppercase tracking-wider">
                     See All
                 </a>
