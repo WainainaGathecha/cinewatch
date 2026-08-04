@@ -21,3 +21,12 @@ export async function getTrendingMovies() {
     const data = await response.json();
     return data.results;
 }
+
+export async function searchMovies(query) {
+    const response = await fetch(
+        `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&language=en-US&page=1`
+    );
+    if (!response.ok) throw new Error("Failed to search movies");
+    const data = await response.json();
+    return data.results;
+}

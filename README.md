@@ -1,22 +1,59 @@
 # Movie-app
 
-A simple movie recommendation application using React. The goal of this project is to develop a clean user interface with a well-functioning backend. Users should be able to get movie recommendations from data fetched from TMDB.
+A simple movie recommendation application using React.
 
-## Primary goals
+## Primary objective
 
-- system architecture
-- UI/UX development
-- data handling
-- testing
+The goal of this project is to develop an application that fetches data from a database and renders a user-friendly interface allowing users to find and review movies of choice.
 
-### Tech stack
+### Core Feature set
+
+- User-friendly interface
+- Data fetching
+- Search functionality
+- Authentication
+
+## Development guidelines
+
+- Use conventional commit messages
+- Every change that affects functions in whole has to be done in it's own branch
+- New concepts should be understood first before proceeding with baseless implementation
+
+### Conventional Commit structure
+
+- feat - a new feature
+- fix - a bug fix
+- docs - changes to the documentation
+- style - formatting missing semicolons etc, no production code change
+- refactor - Refactoring production code eg renaming a variable
+- test - adding missing tests, refactoring tests, no production code change
+- chore - Updating grunt tasks etc
+- perf - a code change that improves performance
+- ci - changes to ci configuration files and scripts
+
+## Tech stack
+
+### Primary Languages
+
+- JavaScript
+
+### Build tool
+
+- Vite
+
+### Frontend Framework
 
 - React
-- Javascript
-- Vite
-- TailwindCSS
 
-### What it needs to have/do
+### CSS Framework
+
+- TailwindCSS v4
+
+### Libraries
+
+- React-Router
+
+## What it needs to have/do
 
 1. Data fetching - fetch movie data from a public api and implement a service to handle api requests and data caching.
 2. Authentication - Implement simple authentication with an auth provider
@@ -53,3 +90,9 @@ A simple movie recommendation application using React. The goal of this project 
 ### Issues
 
 - scrollbar on popular sections cards
+
+## TODOS
+
+- Stash changes in current Branch (SearchPage)
+- Create new Branch (HomePage)
+- Create new page (HomePage)
