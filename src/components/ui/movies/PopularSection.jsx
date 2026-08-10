@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import MovieCard from "./MovieCard";
 import { getPopularMovies } from "@/lib/tmdb";
+import { Link } from "react-router-dom";
 
 export default function PopularSection() {
     const { data: movies, isLoading, error } = useQuery({
@@ -22,12 +23,14 @@ export default function PopularSection() {
 
             <div className="flex gap-4 overflow-x-auto px-4">
                 {movies.map((movie) => (
-                    <MovieCard
-                        key={movie.id}
-                        title={movie.title}
-                        rating={movie.vote_average.toFixed(1)}
-                        posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    />
+                    <Link key={movie.id} to={`/movie/${movie.id}`}>
+                        <MovieCard
+                            key={movie.id}
+                            title={movie.title}
+                            rating={movie.vote_average.toFixed(1)}
+                            posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        />
+                    </Link>
                 ))}
             </div>
         </section>

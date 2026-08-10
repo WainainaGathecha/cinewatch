@@ -30,3 +30,13 @@ export async function searchMovies(query) {
     const data = await response.json();
     return data.results;
 }
+
+// fetch movie details
+export async function getMovieDetails(id) {
+    const response = await fetch(
+        `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US&append_to_response=credits`
+    );
+    if (!response.ok) throw new Error("Failed to fetch movie details");
+    const data = await response.json();
+    return data;
+}
