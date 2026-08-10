@@ -87,12 +87,7 @@ The goal of this project is to develop an application that fetches data from a d
 - a notification badge
 - a hover effect when the buttons are hovered over
 
-### Issues
+### Bugs
 
 - scrollbar on popular sections cards
-
-## TODOS
-
-- Stash changes in current Branch (SearchPage)
-- Create new Branch (HomePage)
-- Create new page (HomePage)
+- search page cards not clickable
