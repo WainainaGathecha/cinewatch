@@ -5,6 +5,7 @@ import {useDebounce} from "@/hooks/useDebounce"
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import {searchMovies, getPopularMovies} from "@/lib/tmdb";
 import SearchResultCard from "@/components/ui/movies/SearchResultCard";
+import { Link } from "react-router-dom";
 
 export default function SearchPage() {
     const [query, setQuery] = useState("");
@@ -85,12 +86,14 @@ export default function SearchPage() {
                     {popularMovies && (
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                             {popularMovies.map((movie) => (
-                                <SearchResultCard
-                                    key={movie.id}
-                                    title={movie.title}
-                                    rating={movie.vote_average.toFixed(1)}
-                                    posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                />
+                                <Link key={movie.id} to={`/movie/${movie.id}`}>
+                                    <SearchResultCard
+                                        key={movie.id}
+                                        title={movie.title}
+                                        rating={movie.vote_average.toFixed(1)}
+                                        posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                    />
+                                </Link>
                             ))}
                         </div>
                     )}
@@ -109,12 +112,14 @@ export default function SearchPage() {
                             </h2>
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                                 {movies.map((movie) => (
-                                    <SearchResultCard
-                                        key={movie.id}
-                                        title={movie.title}
-                                        rating={movie.vote_average.toFixed(1)}
-                                        posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                    />
+                                    <Link key={movie.id} to={`/movie/${movie.id}`}>
+                                        <SearchResultCard
+                                            key={movie.id}
+                                            title={movie.title}
+                                            rating={movie.vote_average.toFixed(1)}
+                                            posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                        />
+                                    </Link>
                                 ))}
                             </div>
                         </>

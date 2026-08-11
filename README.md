@@ -90,4 +90,3 @@ The goal of this project is to develop an application that fetches data from a d
 ### Bugs
 
 - scrollbar on popular sections cards
-- search page cards not clickable
