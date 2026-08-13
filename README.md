@@ -90,3 +90,7 @@ The goal of this project is to develop an application that fetches data from a d
 ### Bugs
 
 - scrollbar on popular sections cards
+
+## Just throwing out some ideas
+
+- what if we made cinewatch an app like twitter combined with letterboxd where users can discuss recent movies, maybe even local locations, reviews of different cinema experiences.
