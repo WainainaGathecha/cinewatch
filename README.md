@@ -86,10 +86,12 @@ The goal of this project is to develop an application that fetches data from a d
 
 - a notification badge
 - a hover effect when the buttons are hovered over
+- user movie recommendation system
 
 ### Bugs
 
 - scrollbar on popular sections cards
+- ui is blank in offline state
 
 ## Just throwing out some ideas
 
