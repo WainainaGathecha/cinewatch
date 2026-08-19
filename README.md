@@ -86,13 +86,13 @@ The goal of this project is to develop an application that fetches data from a d
 
 - a notification badge
 - a hover effect when the buttons are hovered over
+- user movie recommendation system
 
-### Issues
+### Bugs
 
 - scrollbar on popular sections cards
+- ui is blank in offline state
 
-## TODOS
+## Just throwing out some ideas
 
-- Stash changes in current Branch (SearchPage)
-- Create new Branch (HomePage)
-- Create new page (HomePage)
+- what if we made cinewatch an app like twitter combined with letterboxd where users can discuss recent movies, maybe even local locations, reviews of different cinema experiences.

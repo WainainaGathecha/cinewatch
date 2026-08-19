@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import MovieCard from "./MovieCard";
+import { Link } from "react-router-dom";
 import { getTrendingMovies } from "@/lib/tmdb";
 
 export default function TrendingSection() {
@@ -22,14 +23,16 @@ export default function TrendingSection() {
                 </a>
             </div>
 
-            <div className="flex gap-4 overflow-x-auto px-4">
+            <div className="flex gap-4 overflow-x-auto scroll-hide px-4">            
                 {movies.map((movie) => (
-                    <MovieCard
+                    <Link key={movie.id} to={`/movie/${movie.id}`}>
+                        <MovieCard
                         key={movie.id}
                         title={movie.title}
                         rating={movie.vote_average.toFixed(1)}
                         posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    />
+                        />
+                    </Link>
                 ))}
             </div>
         </section>

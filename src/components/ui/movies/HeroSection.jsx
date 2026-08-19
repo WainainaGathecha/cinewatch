@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { Play, Plus, Star} from "lucide-react";
 import { getTrendingMovies } from "@/lib/tmdb";
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
     const { data: movies, isLoading, error } = useQuery({
@@ -58,10 +59,10 @@ export default function HeroSection() {
                 </p>
 
                 <div className="flex gap-3 mt-2">
-                    <button className="flex-1 bg-primary-container text-on-primary-container h-12 rounded-lg font-bold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+                    <Link to={`/movie/${movie.id}`} className="flex-1 bg-primary-container text-on-primary-container h-12 rounded-lg font-bold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
                         <Play size={20} fill="currentColor" />
                         Watch Now
-                    </button>
+                    </Link>
                     <button className="w-12 h-12 bg-black/40 backdrop-blur-md rounded-lg flex items-center justify-center active:scale-[0.98] transition-transform">
                     <Plus size={20} />
                     </button>

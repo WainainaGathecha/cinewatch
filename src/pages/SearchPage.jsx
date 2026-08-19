@@ -3,8 +3,9 @@ import {useQuery} from "@tanstack/react-query";
 import { Search, SearchX, ChevronRight } from "lucide-react";
 import {useDebounce} from "@/hooks/useDebounce"
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import {searchMovies} from "@/lib/tmdb";
+import {searchMovies, getPopularMovies} from "@/lib/tmdb";
 import SearchResultCard from "@/components/ui/movies/SearchResultCard";
+import { Link } from "react-router-dom";
 
 export default function SearchPage() {
     const [query, setQuery] = useState("");
@@ -20,6 +21,11 @@ export default function SearchPage() {
 
         },
         enabled: debouncedQuery.trim().length > 0,
+    });
+
+    const {data: popularMovies, isLoading: isLoadingPopular} = useQuery({
+        queryKey: ["movies", "popular"],
+        queryFn: getPopularMovies,
     });
 
     function addToRecent(term) {
@@ -39,10 +45,10 @@ export default function SearchPage() {
     return(
         <div className="px-4 pt-4">
             <div className="relative group">
-                <Search className="absolute left-4 top1/2 -translate-y-1/2 text-on-surface-variant transition-colors group-focus-within:text-primary" size={20}/>
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant transition-colors group-focus-within:text-primary" size={20}/>
                 <input
                     type="text"
-                    value="{query}"
+                    value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Movies, actors or directors..."
                     className="w-full h-14 bg-surface-container-high rounded-xl pl-12 pr-4 outline-none focus:ring-offset-primary-container transition-all placeholder:text-on-surface-variant/50"
@@ -50,13 +56,13 @@ export default function SearchPage() {
 
             </div>
 
-            {isSearching && recentSearches.length > 0 && (
+            {!isSearching && recentSearches.length > 0 && (
                 <section className="mt-4">
                     <div className="flex items-center justify-between mb-2">
                         <h2 className="text-lg font-semibold">
                             Recent Searches
                         </h2>
-                        <button onClick={()=> recentSearches([])} className="text-xs text-primary uppercase tracking-wider">
+                        <button onClick={()=> setRecentSearches([])} className="text-xs text-primary uppercase tracking-wider">
                             Clear
                         </button>
                     </div>
@@ -67,6 +73,30 @@ export default function SearchPage() {
                             </button>
                         ))}
                     </div>
+                </section>
+            )}
+
+            {!isSearching && (
+                <section className="mt-6">
+                    <h2 className="text-lg font-semibold mb-3">Popular Right Now</h2>
+                    {isLoadingPopular && (
+                        <p className="text-on-surface-variant">Loading...</p>
+                    )}
+
+                    {popularMovies && (
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                            {popularMovies.map((movie) => (
+                                <Link key={movie.id} to={`/movie/${movie.id}`}>
+                                    <SearchResultCard
+                                        key={movie.id}
+                                        title={movie.title}
+                                        rating={movie.vote_average.toFixed(1)}
+                                        posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                    />
+                                </Link>
+                            ))}
+                        </div>
+                    )}
                 </section>
             )}
 
@@ -82,12 +112,14 @@ export default function SearchPage() {
                             </h2>
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                                 {movies.map((movie) => (
-                                    <SearchResultCard
-                                        key={movie.id}
-                                        title={movie.title}
-                                        rating={movie.vote_average.toFixed(1)}
-                                        posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                    />
+                                    <Link key={movie.id} to={`/movie/${movie.id}`}>
+                                        <SearchResultCard
+                                            key={movie.id}
+                                            title={movie.title}
+                                            rating={movie.vote_average.toFixed(1)}
+                                            posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                        />
+                                    </Link>
                                 ))}
                             </div>
                         </>
