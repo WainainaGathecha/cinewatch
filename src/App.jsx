@@ -4,6 +4,7 @@ import BottomNav from './components/ui/layout/BottomNav';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
+import BottomNavBar from './components/ui/layout/BottomNav';
 
 function App() {
     return (
@@ -17,7 +18,7 @@ function App() {
                     <Route path="/movie/:id" element={<MovieDetailsPage />}></Route>
                 </Routes>
             </main>
-            <BottomNav />
+            <BottomNavBar />
 
         </div>
     );
