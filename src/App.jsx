@@ -8,7 +8,7 @@ import BottomNavBar from './components/ui/layout/BottomNav';
 
 function App() {
     return (
-        <div className='bg-surface min-h-screen text-on-surface'>
+        <div className='bg-surface min-h-screen text-on-surface lg:px-10'>
             <Navbar />
                         
             <main className='pt-16 pb-20'>
