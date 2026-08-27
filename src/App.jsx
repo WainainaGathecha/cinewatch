@@ -4,10 +4,11 @@ import BottomNav from './components/ui/layout/BottomNav';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
+import BottomNavBar from './components/ui/layout/BottomNav';
 
 function App() {
     return (
-        <div className='bg-surface min-h-screen text-on-surface'>
+        <div className='bg-surface min-h-screen text-on-surface lg:px-10'>
             <Navbar />
                         
             <main className='pt-16 pb-20'>
@@ -17,7 +18,7 @@ function App() {
                     <Route path="/movie/:id" element={<MovieDetailsPage />}></Route>
                 </Routes>
             </main>
-            <BottomNav />
+            <BottomNavBar />
 
         </div>
     );
