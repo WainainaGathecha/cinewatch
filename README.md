@@ -82,15 +82,6 @@ The goal of this project is to develop an application that fetches data from a d
 - user movie recommendation system
 - intelligent search feature
 
-### Bugs
-
-- Homepage is blank in offline state
-- See all buttons does not work
-- My List and Profile are on the BottomNavBar
-- inconsistent ui
-- Plus/Add button on hero does not work
-- Watch Now button does not work
-- Navigation Hamburger does not work
 
 ## MVP
 
@@ -111,3 +102,38 @@ The goal of this project is to develop an application that fetches data from a d
 
 - Implement testing
 - Implement a CI/CD pipeline
+
+## Bugs
+
+- Homepage is blank in offline state - soution -add skeleton
+- See all buttons does not work - solution - implement movieGrid page
+- inconsistent movie card shapes
+- Plus/Add button on hero does not work - solution - implement watchlist
+- Watch Now button does not work - solution - route to movieDescription page
+- Navigation Hamburger does not work - solution - implment navigation
+
+### Bug Fixes
+
+#### 1. Homepage offline state
+
+This fix implementsa skeleton loading state
+
+1. Install react-loading-skeleton
+2. Implement it in the components
+
+#### 2. See all button
+
+1.Create one generic route for the affected sections (trending, popular, watchlists, favorites) that loads a single MovieGrid component. This page will:
+
+- Detect the section type from the URL parameters
+- Fetch the correct data from TMDB API
+- Pass that data into the MovieGrid component
+
+2.Set up a dynamic route to capture which section the user wants to see
+3.Update the see all buttons to link to the proper dynamic url path
+4.Create the reusable movieGrid component
+5.Create the dynamic CollectionPage controller to read the url and determine what data to load and inject straight into the MovieGrid component.
+
+#### 3. Inconsistent movie card shapes
+
+- Wrap image container with a fixed aspect ratio and use object-cover
