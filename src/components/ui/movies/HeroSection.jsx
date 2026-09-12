@@ -61,7 +61,7 @@ export default function HeroSection() {
                 <div className="flex gap-3 mt-2">
                     <Link to={`/movie/${movie.id}`} className="flex-1 bg-primary-container text-on-primary-container h-12 rounded-lg font-bold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
                         <Play size={20} fill="currentColor" />
-                        Watch Now
+                        Explore Movie
                     </Link>
                     <button className="w-12 h-12 bg-black/40 backdrop-blur-md rounded-lg flex items-center justify-center active:scale-[0.98] transition-transform">
                     <Plus size={20} />
