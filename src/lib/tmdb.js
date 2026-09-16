@@ -40,3 +40,21 @@ export async function getMovieDetails(id) {
     const data = await response.json();
     return data;
 }
+
+// paged versions
+export async function getPopularMoviesPaged({ pageParam = 1 } = {}) {
+    const response = await fetch(
+        `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${pageParam}`
+    );
+    if (!response.ok) throw new Error("failed to fetch popular movies");
+    return response.json();
+
+}
+export async function getTrendingMovies({ pageParam = 1 } = {}) {
+    const response = await fetch(
+        `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${pageParam}`
+
+    );
+    if (!response.ok) throw new Error("failed to fetch trending movies");
+    return response.json();
+}

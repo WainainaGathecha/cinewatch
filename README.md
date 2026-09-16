@@ -82,7 +82,6 @@ The goal of this project is to develop an application that fetches data from a d
 - user movie recommendation system
 - intelligent search feature
 
-
 ## MVP
 
 ### Keep
